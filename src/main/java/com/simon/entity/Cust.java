@@ -70,6 +70,9 @@ public class Cust {
     public Cust(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
+        Date now = new Date();
+        this.createdTime = now;
+        this.updatedTime = now;
     }
 
     public Long getId() {
@@ -95,6 +98,8 @@ public class Cust {
         if (StringUtil.isNotEmpty(lastName)) {
             this.lastName = lastName;
         }
+        
+        this.updatedTime = new Date();
     }
     
     public void addEmailAddr(String emailAddr) {
@@ -118,6 +123,8 @@ public class Cust {
         
         EmailAddress emailAddress = new EmailAddress(emailAddr);
         this.emailAddressList.add(emailAddress);
+        
+        this.updatedTime = new Date();
     }
     
     private boolean exist(String emailAddr) {
@@ -139,6 +146,10 @@ public class Cust {
         Matcher m = p.matcher(emailAddr);
         //进行正则匹配
         return m.matches();
+    }
+
+    public Date getCreatedTime() {
+        return createdTime;
     }
     
 }

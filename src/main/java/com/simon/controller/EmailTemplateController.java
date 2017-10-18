@@ -42,9 +42,9 @@ public class EmailTemplateController {
         return template;
     }
     
-    @PutMapping(consumes = "application/json")
-    public EmailTemplate update(@RequestBody EmailTemplate param) {
-        long id = param.getId();
+    @PutMapping(value = "/{id:[\\d]+}", consumes = "application/json")
+    public EmailTemplate update(@PathVariable("id") int id, @RequestBody EmailTemplate param) {
+        // long id = param.getId();
         
         String name = param.getName();
         String subject = param.getSubject();
@@ -69,8 +69,8 @@ public class EmailTemplateController {
         this.emailTemplateService.activate(templateId);
     }
     
-    @DeleteMapping(value = "/{templateId:[\\d]+}")
-    public void delete(@PathVariable("templateId") int templateId) {
-        this.emailTemplateService.deleteTemplate(templateId);
+    @DeleteMapping(value = "/{id:[\\d]+}")
+    public void delete(@PathVariable("id") int id) {
+        this.emailTemplateService.deleteTemplate(id);
     }
 }

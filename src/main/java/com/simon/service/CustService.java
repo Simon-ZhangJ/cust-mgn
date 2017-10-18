@@ -83,8 +83,7 @@ public class CustService {
         return cust;
     }
 
-    public Cust updateCust(Cust param) {
-        long custId = param.getId();
+    public Cust updateCust(long custId, Cust param) {
         Cust cust = this.custRepository.findOne(param.getId());
         if (cust == null) {
             throw new DataNotFoundException("cust [" + custId + "] does not exists");

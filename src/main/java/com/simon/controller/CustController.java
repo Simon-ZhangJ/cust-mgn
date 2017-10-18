@@ -48,9 +48,10 @@ public class CustController {
         return cust;
     }
 
-    @PutMapping(consumes = "application/json")
-    public Cust update(@RequestBody Cust param) {
-        return this.custService.updateCust(param);
+    @PutMapping(value = "/{custId:[\\d]+}", consumes = "application/json")
+    public Cust update(@PathVariable("custId") long custId, @RequestBody Cust param) {
+        
+        return this.custService.updateCust(custId, param);
     }
 
     @DeleteMapping(value = "/{custId:[\\d]+}")

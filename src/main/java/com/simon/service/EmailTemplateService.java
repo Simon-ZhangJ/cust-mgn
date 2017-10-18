@@ -19,7 +19,11 @@ public class EmailTemplateService {
     }
     
     public List<EmailTemplate> queryAllTemplates() {
-        return this.templateRepository.findAll();
+        List<EmailTemplate> retList = this.templateRepository.findAll();
+        if (retList == null || retList.isEmpty()) {
+            throw new DataNotFoundException("no email template found");
+        }
+        return retList;
     }
     
     public EmailTemplate createTemplate(EmailTemplate param) {

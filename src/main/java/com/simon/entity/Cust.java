@@ -28,8 +28,16 @@ public class Cust {
         return updatedTime;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public void setUpdatedTime(Date updatedTime) {
         this.updatedTime = updatedTime;
+    }
+
+    public void setEmailAddressList(List<EmailAddress> emailAddressList) {
+        this.emailAddressList = emailAddressList;
     }
 
     public void setFirstName(String firstName) {

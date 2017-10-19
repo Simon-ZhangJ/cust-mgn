@@ -13,6 +13,10 @@ import com.simon.exception.BaseException;
 @Entity
 @Table(name="EMAIL_ADDRESS")
 public class EmailAddress {
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Id
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     @GeneratedValue(generator = "system-uuid")

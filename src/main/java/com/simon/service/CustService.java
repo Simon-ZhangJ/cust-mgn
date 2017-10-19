@@ -59,9 +59,8 @@ public class CustService {
         }
         return cust;
     }
-
-    public Cust createCust(Cust param) {
-
+    
+    protected Cust initCustByParam(Cust param) {
         List<EmailAddress> emailAddrList = param.getEmailAddressList();
 
         Cust cust = new Cust(param.getFirstName(), param.getLastName());
@@ -70,9 +69,21 @@ public class CustService {
                 cust.addEmailAddr(emailAddress.getEmail());
             }
         }
+        
+        return cust;
+    }
 
+    public Cust createCust(Cust param) {
+        List<EmailAddress> emailAddrList = param.getEmailAddressList();
+
+        Cust cust = new Cust(param.getFirstName(), param.getLastName());
+        if (emailAddrList != null && !emailAddrList.isEmpty()) {
+            for (EmailAddress emailAddress : emailAddrList) {
+                cust.addEmailAddr(emailAddress.getEmail());
+            }
+        }
+        
         cust = this.custRepository.save(cust);
-
         // send email
         if (cust.getEmailAddressList() != null && !cust.getEmailAddressList().isEmpty()) {
             for (EmailAddress emailAddress : cust.getEmailAddressList()) {

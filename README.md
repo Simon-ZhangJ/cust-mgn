@@ -7,7 +7,9 @@ Please prepare a computer with jdk1.8, apache-maven-3.2.3(+), eclipse 4(+) and a
 2. HOW TO IMPORT PROJECT INTO YOUR ECLIPSE
 ------------------------------------------
 (1) Using the git client tool, clone the project from https://github.com/Simon-ZhangJ/cust-mgn to your own environment.
+
 (2) Open eclipse IDE and import project cust-mgn using the option of Existing Maven Projects.
+
 (3) Wait a moment, your environment will be prepared.
 
 3. HOW TO RUN THE PROJECT
